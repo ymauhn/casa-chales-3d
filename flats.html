@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 15 16 5l12 10v13H4z' fill='%23b8572f'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diamantina Flats · Flat 04 em 3D</title>
+<meta name="description" content="Visita 3D navegável do Flat 04 do Diamantina Flats: da maquete a cada cômodo.">
+<link rel="preload" href="modelos/flat-04.glb" as="fetch" crossorigin>
+<link rel="stylesheet" href="./src/estilo.css">
+</head>
+<body data-imovel="flat-04">
+<canvas id="cena" aria-label="Cena 3D do Flat 04. Use o menu de cômodos para navegar."></canvas>
+<div id="marcas"></div>
+<div id="veu"></div>
+
+<header class="cabeca vidro">
+  <a href="./">← Imóveis</a>
+  <h1>Flat 04</h1>
+  <p>Diamantina Flats</p>
+</header>
+
+<nav id="ferramentas" aria-label="Modos da visita">
+  <button type="button" id="b-auto" aria-pressed="false">▶ Tour automático</button>
+  <button type="button" id="b-livre" aria-pressed="false">Andar livre</button>
+  <button type="button" id="b-360" hidden>Ver em 360°</button>
+  <button type="button" id="b-planta">Planta</button>
+</nav>
+<button type="button" id="b-ant" class="seta" aria-label="Cômodo anterior">‹</button>
+<button type="button" id="b-prox" class="seta" aria-label="Próximo cômodo">›</button>
+
+<div id="legenda" class="vidro" role="status" aria-live="polite"><b></b><span></span></div>
+<div id="ajuda" class="vidro" role="note"></div>
+<div id="joystick"></div>
+<nav id="menu" aria-label="Cômodos"><ul></ul></nav>
+
+<section id="carga" aria-label="Abertura">
+  <img class="poster" src="img/flat-04/topo-grande.webp" alt="O Flat 04 visto de cima, renderizado no Blender">
+  <div class="cartao vidro">
+    <p class="kicker">Visita 3D · Diamantina Flats</p>
+    <h2>Flat 04</h2>
+    <p class="lugar">Sala com cozinha americana, quarto, banheiro, varanda e lavanderia</p>
+    <p class="sobre">O flat montado a partir das fotos, com o interior ampliado em 21/10. Comece pela maquete e entre de cômodo em cômodo. Os outros flats entram nesta página quando forem modelados.</p>
+    <div id="barra"><i></i></div>
+    <p id="status">Carregando o modelo 3D…</p>
+    <button type="button" id="b-comecar" hidden>Entrar no flat</button>
+  </div>
+</section>
+<script type="module" src="./src/tour.js"></script>
+</body>
+</html>

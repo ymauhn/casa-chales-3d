@@ -1,0 +1,7 @@
+node_modules/
+dist/
+testes/saida/
+*.log
+.vite/
+public/modelos/*-leve.glb
+.dream-loop/

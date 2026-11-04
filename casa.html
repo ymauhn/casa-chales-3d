@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 15 16 5l12 10v13H4z' fill='%23b8572f'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Casa dos Chalés · visita 3D</title>
+<meta name="description" content="Visita 3D navegável da Casa dos Chalés, em Lençóis (BA): da fachada a cada cômodo.">
+<link rel="preload" href="modelos/casa-chales.glb" as="fetch" crossorigin>
+<link rel="stylesheet" href="./src/estilo.css">
+</head>
+<body data-imovel="casa-chales">
+<canvas id="cena" aria-label="Cena 3D da Casa dos Chalés. Use o menu de cômodos para navegar."></canvas>
+<div id="marcas"></div>
+<div id="veu"></div>
+
+<header class="cabeca vidro">
+  <a href="./">← Imóveis</a>
+  <h1>Casa dos Chalés</h1>
+  <p>Lençóis · Chapada Diamantina</p>
+</header>
+
+<nav id="ferramentas" aria-label="Modos da visita">
+  <button type="button" id="b-auto" aria-pressed="false">▶ Tour automático</button>
+  <button type="button" id="b-livre" aria-pressed="false">Andar livre</button>
+  <button type="button" id="b-360" hidden>Ver em 360°</button>
+  <button type="button" id="b-planta">Planta</button>
+</nav>
+<button type="button" id="b-ant" class="seta" aria-label="Cômodo anterior">‹</button>
+<button type="button" id="b-prox" class="seta" aria-label="Próximo cômodo">›</button>
+
+<div id="legenda" class="vidro" role="status" aria-live="polite"><b></b><span></span></div>
+<div id="ajuda" class="vidro" role="note"></div>
+<div id="joystick"></div>
+<nav id="menu" aria-label="Cômodos"><ul></ul></nav>
+
+<section id="carga" aria-label="Abertura">
+  <img class="poster" src="img/casa-chales/aerea-grande.webp" alt="A Casa dos Chalés vista do alto, renderizada no Blender">
+  <div class="cartao vidro">
+    <p class="kicker">Visita 3D</p>
+    <h2>Casa dos Chalés</h2>
+    <p class="lugar">Lençóis, Chapada Diamantina (BA)</p>
+    <p class="sobre">A casa pronta, como ficará depois da obra: dois pavimentos, piscina, espaço gourmet e quatro suítes. Entre pela fachada e vá de cômodo em cômodo.</p>
+    <div id="barra"><i></i></div>
+    <p id="status">Carregando o modelo 3D…</p>
+    <button type="button" id="b-comecar" hidden>Entrar pela fachada</button>
+  </div>
+</section>
+<script type="module" src="./src/tour.js"></script>
+</body>
+</html>

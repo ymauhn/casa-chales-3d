@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 15 16 5l12 10v13H4z' fill='%23b8572f'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imóveis em 3D · Diamantina Flats e Casa dos Chalés</title>
+<meta name="description" content="Visitas 3D navegáveis: os flats do Diamantina Flats e a Casa dos Chalés, em Lençóis.">
+<link rel="stylesheet" href="./src/estilo.css">
+<style>
+  body { overflow: auto; background: #171512; color: var(--creme); }
+  .capa { min-height: 100%; display: flex; flex-direction: column; padding: clamp(20px, 4vw, 48px); gap: clamp(18px, 3vw, 32px); max-width: 1320px; margin: 0 auto; }
+  .capa header p { margin: 0; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--terracota-2); font-weight: 700; }
+  .capa header h1 { margin: 8px 0 0; font-family: var(--serifa); font-weight: 600; font-size: clamp(32px, 5vw, 56px); line-height: 1.02; max-width: 16ch; }
+  .capa header .sub { margin-top: 12px; max-width: 58ch; color: var(--creme-2); font-size: 16px; line-height: 1.55; letter-spacing: 0; text-transform: none; font-weight: 400; }
+  .imoveis { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(14px, 2vw, 24px); flex: 1; }
+  .imovel { position: relative; display: flex; align-items: flex-end; min-height: clamp(300px, 52vh, 560px); border-radius: 22px; overflow: hidden; color: inherit; text-decoration: none; isolation: isolate; border: 1px solid rgba(244,239,230,.12); }
+  .imovel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+  .imovel::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(10,9,8,0) 35%, rgba(10,9,8,.82) 100%); }
+  .imovel:hover img, .imovel:focus-visible img { transform: scale(1.045); }
+  .imovel div { padding: clamp(18px, 2.4vw, 30px); }
+  .imovel small { display: block; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--creme-2); }
+  .imovel h2 { margin: 6px 0 6px; font-family: var(--serifa); font-weight: 600; font-size: clamp(28px, 3.2vw, 40px); line-height: 1.05; }
+  .imovel p { margin: 0 0 14px; max-width: 46ch; color: var(--creme-2); line-height: 1.5; font-size: 15px; }
+  .imovel span { display: inline-block; padding: 10px 16px; border-radius: 999px; background: var(--terracota); font-weight: 700; font-size: 14px; }
+  .imovel:hover span { background: var(--terracota-2); }
+  footer { font-size: 12.5px; color: rgba(244,239,230,.55); line-height: 1.5; }
+</style>
+</head>
+<body>
+<main class="capa">
+  <header>
+    <p>Visitas 3D</p>
+    <h1>Entre nos imóveis antes de chegar</h1>
+    <p class="sub">Modelos 3D feitos a partir das plantas e das fotos, no navegador: a câmera leva você de cômodo em cômodo, ou você anda por conta própria.</p>
+  </header>
+  <section class="imoveis">
+    <a class="imovel" href="casa.html">
+      <img src="img/casa-chales/aerea-grande.webp" alt="">
+      <div>
+        <small>Lençóis · Chapada Diamantina</small>
+        <h2>Casa dos Chalés</h2>
+        <p>Dois pavimentos, piscina com deck, espaço gourmet e quatro suítes, no meio da mata.</p>
+        <span>Visitar a casa →</span>
+      </div>
+    </a>
+    <a class="imovel" href="flats.html">
+      <img src="img/flat-04/cozinha_para_tv.webp" alt="">
+      <div>
+        <small>Diamantina Flats</small>
+        <h2>Flat 04</h2>
+        <p>Sala com cozinha americana, quarto, banheiro, varanda e lavanderia.</p>
+        <span>Visitar o flat →</span>
+      </div>
+    </a>
+  </section>
+  <footer>Primeira versão para teste interno (03/11/2026). Os móveis, as cores e o paisagismo são imaginados; as medidas vêm das plantas e das fotos.</footer>
+</main>
+</body>
+</html>
