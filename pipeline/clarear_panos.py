@@ -1,7 +1,7 @@
 """Exposição automática dos panoramas Cycles escuros (renders noturnos que ficam quase pretos numa tela comum).
 Em linear: ganho até a mediana de luminância chegar à meta, com compressão suave dos realces (Reinhard estendido),
 para as lâmpadas não estourarem. Gera public/pano/8k e public/pano (4096) a partir dos PNG; o public/pano/env (a luz do 3D) não muda.
-Uso: py -3 -X utf8 pipeline/clarear_panos.py <pasta dos PNG 8192> [meta_p50_srgb=110]
+Uso: py -3 -X utf8 pipeline/clarear_panos.py <pasta dos PNG> [meta_p50_srgb=110] [ids separados por vírgula]
 """
 import pathlib
 import sys
@@ -13,7 +13,7 @@ Image.MAX_IMAGE_PIXELS = None
 ORIG = pathlib.Path(sys.argv[1])
 META = float(sys.argv[2]) if len(sys.argv) > 2 else 110
 PUB = pathlib.Path(__file__).resolve().parent.parent / "public" / "pano"
-PONTOS = ["entrada", "piscina", "gourmet", "varanda_suspensa", "salao", "suite", "banheiro", "suite_baixo", "varanda_baixo"]
+PONTOS = sys.argv[3].split(",") if len(sys.argv) > 3 else ["entrada", "piscina", "gourmet", "varanda_suspensa", "salao", "suite", "banheiro", "suite_baixo", "varanda_baixo"]
 
 
 def para_linear(v):
@@ -42,6 +42,8 @@ for p in PONTOS:
         print(f"{p}: p50 {p50:.0f}, sem ajuste")
     img = Image.fromarray((np.clip(rgb, 0, 1) * 255 + 0.5).astype(np.uint8))
     for pasta, largura, q in [(PUB / "8k", 8192, 80), (PUB, 4096, 78)]:   # o env (luz do 3D) fica com o render original
+        if img.width < largura:
+            continue   # não amplia: um render de 4096 não vira 8K
         pasta.mkdir(parents=True, exist_ok=True)
         (img if img.width == largura else img.resize((largura, largura // 2), Image.LANCZOS)).save(pasta / f"{p}.webp", "WEBP", quality=q, method=4)
     del rgb, lum, img
